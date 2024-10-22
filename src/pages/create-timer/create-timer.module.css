@@ -1,0 +1,39 @@
+.page {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    gap: 1rem;
+    padding: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    background-color: #fff;
+}
+
+.label {
+    display: block;
+    font-weight: 600;
+    text-align: left;
+    margin-left: 0.5rem;
+}
+
+.input, .textarea {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.textarea {
+    min-width: 200px;
+    min-height: 50px;
+}
