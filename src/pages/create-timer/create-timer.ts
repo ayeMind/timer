@@ -31,7 +31,7 @@ export const pageCreateTimer = `
 
             <div class=${classes.inputContainer}>
                 <label class=${classes.label} for="date">Date</label>
-                <input class=${classes.input} type="date" id="date" name="date" />
+                <input class=${classes.input} type="datetime-local" id="date" name="date" />
             </div>
 
             <button class=${classes.button} type="submit">Create</button>

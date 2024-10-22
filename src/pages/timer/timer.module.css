@@ -1,0 +1,39 @@
+.title {
+    font-size: 5rem;
+    margin-bottom: 2rem;
+    color: darkred;
+}
+
+.timerItem::first-line{
+    font-size: 4rem;
+    color: darkred;
+}
+
+.label {
+    font-size: 3rem;
+}
+
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 3rem;
+    }
+    .timerItem::first-line{
+        font-size: 2rem;
+    }
+    .label {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 2rem;
+    }
+    .timerItem::first-line{
+        font-size: 1.5rem;
+    }
+    .label {
+        font-size: 1rem;
+    }
+}

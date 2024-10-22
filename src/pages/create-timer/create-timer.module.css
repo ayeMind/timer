@@ -13,7 +13,10 @@
     padding: 2rem;
     border: 1px solid #ccc;
     border-radius: 0.5rem;
-    background-color: #fff;
+    background-color: #1a1a1a;
+    /* Тени */
+    box-shadow: 0 0 5px;
+
 }
 
 .label {
@@ -28,6 +31,7 @@
     width: 100%;
     padding: 0.5rem;
     border: 1px solid #ccc;
+    background-color: #1a1a1a;
     border-radius: 0.25rem;
     font-size: 1rem;
     line-height: 1.5;
@@ -36,4 +40,28 @@
 .textarea {
     min-width: 200px;
     min-height: 50px;
+}
+
+.button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    margin-top: 1rem;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    color: white;
+    cursor: pointer;
+    transition: border-color 0.25s;
+  }
+
+  .button:hover {
+    border-color: #646cff;
+  }
+
+
+@media (max-width: 576px) {
+    .form {
+        padding: 1rem;
+    }    
 }
