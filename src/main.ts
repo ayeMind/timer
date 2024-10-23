@@ -3,18 +3,20 @@ import { pageCreateTimer } from './pages/create-timer'
 import { pageTimer } from './pages/timer'
 import { pageNotFound } from './pages/not-found'
 
-let page = pageNotFound;
-const url = new URL(window.location.href);
-console.log(url)
+const routes: { [key: string]: string } = {
+  '/': pageCreateTimer,
+  '/timer': pageTimer,
+  '/not-found': pageNotFound 
+};
 
-if (url.pathname === '/timer') {
-  if (url.searchParams.has('id') && url.searchParams.has('date')) {
-    page = pageTimer;
-  }
-} else if (url.pathname === '/') {
-  page = pageCreateTimer;
-} else {
-  page = pageNotFound;
-}
+const parseLocation = () => {
+  const pathname = window.location.pathname;
+  return routes[pathname] || routes['/not-found']; 
+};
 
-document.querySelector('#app')!.innerHTML = page;
+const renderPage = () => {
+  const page = parseLocation();
+  document.querySelector('#app')!.innerHTML = page;
+};
+
+renderPage();
