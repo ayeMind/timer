@@ -8,6 +8,7 @@
 .title {
     font-size: 4rem;
     margin-bottom: 2rem;
+    text-wrap: balance;
 }
 
 .timerItem::first-line{

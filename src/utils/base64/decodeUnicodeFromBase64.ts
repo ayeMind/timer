@@ -1,17 +1,8 @@
 export function decodeUnicodeFromBase64(base64Encoded: string): string {
   try {
-    const text = decodeURIComponent(
-      atob(base64Encoded)
-        .split("")
-        .map((c) => {
-          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-        })
-        .join("")
-    );
-
-    return text
+    return decodeURIComponent(atob(base64Encoded));
   } catch (error) {
-    console.log(error);
+    console.error("Ошибка декодирования Base64:", error);
     return "";
   }
 }
