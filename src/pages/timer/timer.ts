@@ -10,10 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // if (title === "") {
-  //   window.location.href = "/not-found";
-  //   return;
-  // }
+  if (title === "") {
+    window.location.href = "/not-found";
+    return;
+  }
 
   const page = document.getElementById("page");
 

@@ -3,7 +3,6 @@ import { encodeUnicodeToBase64 } from "../../utils/base64";
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector<HTMLFormElement>("form");
-  console.log(form);
 
   form?.addEventListener("submit", (event) => {
     event.preventDefault();
