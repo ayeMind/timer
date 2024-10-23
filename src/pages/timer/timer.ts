@@ -3,13 +3,30 @@ import { decodeUnicodeFromBase64 } from "../../utils/base64";
 
 document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
+  const url = new URL(window.location.href);
   const title = decodeUnicodeFromBase64(params.get("id") as string);
+
+  if (url.pathname !== "/timer") {
+    return
+  }
+
+  if (title === "") {
+    window.location.href = "/not-found"; 
+    return;
+  }
+
+  const page = document.getElementById("page");
+
+  if (page) {
+    page.style.display = "block";
+  }
+
   const titleElement = document.getElementById("title");
 
   if (titleElement) {
     titleElement.textContent = title;
   }
-  
+
   const date = new Date(decodeUnicodeFromBase64(params.get("date") as string));
 
   if (new Date() > date) {
@@ -67,13 +84,13 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(animateTimer);
     setInterval(updateMilliseconds, 10);
   };
+
   
 });
 
 
-
 export const pageTimer = `
-    <div class="page">
+    <div class=${classes.page} id="page">
         <h1 class=${classes.title} id="title"></h1>
         <div class="timer">
             <div class=${classes.timerItem}>

@@ -1,5 +1,11 @@
+.page {
+    text-align: center;
+    word-wrap: break-word;
+    display: none;
+}
+
 .title {
-    font-size: 5rem;
+    font-size: 4rem;
     margin-bottom: 2rem;
     color: darkred;
 }
@@ -13,13 +19,30 @@
     font-size: 3rem;
 }
 
+.visible {
+    display: block;
+}
 
-@media (max-width: 768px) {
+
+@media (max-width: 1280px) {
     .title {
         font-size: 3rem;
     }
     .timerItem::first-line{
+        font-size: 3rem;
+    }
+    .label {
         font-size: 2rem;
+    }
+}
+
+
+@media (max-width: 1024px) {
+    .title {
+        font-size: 3rem;
+    }
+    .timerItem::first-line{
+        font-size: 3rem;
     }
     .label {
         font-size: 1.5rem;
@@ -31,7 +54,19 @@
         font-size: 2rem;
     }
     .timerItem::first-line{
-        font-size: 1.5rem;
+        font-size: 3rem;
+    }
+    .label {
+        font-size: 1rem;
+    }
+}
+
+@media (max-height: 580px) {
+    .title {
+        font-size: 2rem;
+    }
+    .timerItem::first-line{
+        font-size: 3rem;
     }
     .label {
         font-size: 1rem;

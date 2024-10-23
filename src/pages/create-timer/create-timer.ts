@@ -9,6 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
     event.preventDefault();
     const formData = new FormData(form);
     const title = formData.get("title") as string;
+    if (title.length > 100) {
+        const errorLabel = document.getElementById("error");
+        if (errorLabel) {
+            errorLabel.textContent = "Title must be less than 100 characters";
+            return;
+        }
+    }
     const date = formData.get("date") as string;
 
     const encodedTitle = encodeUnicodeToBase64(title);
@@ -27,6 +34,7 @@ export const pageCreateTimer = `
             <div class=${classes.inputContainer}>
                 <label class=${classes.label} for="title">Title</label>
                 <textarea class=${classes.textarea} type="text" id="title" name="title" placeholder="Death of the Universe"></textarea>
+                <label id="error" class=${classes.error} for="title"></label>
             </div>
 
             <div class=${classes.inputContainer}>

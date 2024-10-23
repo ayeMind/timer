@@ -59,6 +59,11 @@
     border-color: #646cff;
   }
 
+.error {
+    color: red;
+    margin-top: 0.5rem; 
+}
+
 
 @media (max-width: 576px) {
     .form {
