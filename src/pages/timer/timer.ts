@@ -7,11 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const title = decodeUnicodeFromBase64(params.get("id") as string);
 
   if (url.pathname !== "/timer") {
-    return
+    return;
   }
 
   if (title === "") {
-    window.location.href = "/not-found"; 
+    window.location.href = "/not-found";
     return;
   }
 
@@ -27,6 +27,11 @@ document.addEventListener("DOMContentLoaded", () => {
     titleElement.textContent = title;
   }
 
+  const color = "#" + params.get("color");
+  if (color) {
+    document.getElementById("page")!.style.color = color;
+  }
+
   const date = new Date(decodeUnicodeFromBase64(params.get("date") as string));
 
   if (new Date() > date) {
@@ -39,53 +44,40 @@ document.addEventListener("DOMContentLoaded", () => {
   const secondsElement = document.getElementById("seconds");
   const millisecondsElement = document.getElementById("milliseconds");
 
-  const initTimer = () => {
-    const timeLeft = date.getTime() - Date.now();
-    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-    const hours = Math.floor(timeLeft / (1000 * 60 * 60)) % 24;
-    const minutes = Math.floor(timeLeft / (1000 * 60)) % 60;
-    const seconds = Math.floor(timeLeft / 1000) % 60;
-
-    return { days, hours, minutes, seconds };
-  };
-
-  const renderTimer = () => {
-    const { days, hours, minutes, seconds } = initTimer();
-
-    daysElement!.textContent = String(days)+" ";
-    hoursElement!.textContent = String(hours)+" ";
-    minutesElement!.textContent = String(minutes)+" ";
-    secondsElement!.textContent = String(seconds)+" ";
-  };
-
   let startTime: number | null = null;
 
   const animateTimer = (timestamp: number) => {
     if (!startTime) startTime = timestamp;
-    const progress = timestamp - startTime;
 
-    if (progress >= 1000) {
-      renderTimer();
-      startTime = timestamp;
+    const timeLeft = date.getTime() - Date.now();
+
+    if (timeLeft <= 0) {
+      daysElement!.textContent = "0 ";
+      hoursElement!.textContent = "0 ";
+      minutesElement!.textContent = "0 ";
+      secondsElement!.textContent = "0 ";
+      millisecondsElement!.textContent = "0 ";
+      return;
     }
 
-    requestAnimationFrame(animateTimer);
-  };
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(timeLeft / (1000 * 60 * 60)) % 24;
+    const minutes = Math.floor(timeLeft / (1000 * 60)) % 60;
+    const seconds = Math.floor(timeLeft / 1000) % 60;
+    const milliseconds = Math.floor(timeLeft % 1000);
 
-  const updateMilliseconds = () => {
-    millisecondsElement!.textContent = String(
-      Math.floor((date.getTime() - Date.now()) % 1000)
-    )+" ";
+    daysElement!.textContent = String(days) + " ";
+    hoursElement!.textContent = String(hours) + " ";
+    minutesElement!.textContent = String(minutes) + " ";
+    secondsElement!.textContent = String(seconds) + " ";
+    millisecondsElement!.textContent = String(milliseconds) + " ";
+
+    requestAnimationFrame(animateTimer);
   };
 
   window.onload = () => {
- 
-    renderTimer();
     requestAnimationFrame(animateTimer);
-    setInterval(updateMilliseconds, 10);
   };
-
-  
 });
 
 

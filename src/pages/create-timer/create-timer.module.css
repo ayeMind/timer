@@ -37,6 +37,20 @@
     line-height: 1.5;
 }
 
+.colorContainer {
+    display: flex;
+    margin-top: 1rem;
+    gap: 0.5rem;
+}
+
+.colorInput {
+    width: 50px;
+    height: 25px;
+    cursor: pointer;
+    border: 0;
+    margin-left: 0.5rem;
+}
+
 .textarea {
     min-width: 200px;
     min-height: 50px;

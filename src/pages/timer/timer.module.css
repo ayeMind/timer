@@ -2,18 +2,17 @@
     text-align: center;
     word-wrap: break-word;
     display: none;
+    color: #8b0000
 }
 
 .title {
     font-size: 4rem;
     margin-bottom: 2rem;
-    color: darkred;
 }
 
 .timerItem::first-line{
     font-size: 4rem;
-    color: darkred;
-}
+};
 
 .label {
     font-size: 3rem;
