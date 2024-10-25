@@ -1,19 +1,9 @@
 import classes from "./timer.module.css";
 import { decodeUnicodeFromBase64 } from "../../utils/base64";
 
-document.addEventListener("DOMContentLoaded", () => {
+const onTimerLoaded = () => {
   const params = new URLSearchParams(window.location.search);
-  const url = new URL(window.location.href);
   const title = decodeUnicodeFromBase64(params.get("id") as string);
-
-  if (url.pathname !== "/timer") {
-    return;
-  }
-
-  if (title === "") {
-    window.location.href = "/not-found";
-    return;
-  }
 
   const page = document.getElementById("page");
 
@@ -78,6 +68,12 @@ document.addEventListener("DOMContentLoaded", () => {
   window.onload = () => {
     requestAnimationFrame(animateTimer);
   };
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (window.location.pathname === "/timer") {
+    onTimerLoaded();
+  }
 });
 
 
