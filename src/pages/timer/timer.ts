@@ -4,10 +4,14 @@ import { decodeUnicodeFromBase64 } from "../../utils/base64";
 const onTimerLoaded = () => {
   const params = new URLSearchParams(window.location.search);
   const title = decodeUnicodeFromBase64(params.get("id") as string);
+  const dateString = decodeUnicodeFromBase64(params.get("date") as string);
 
-  if (!title) {
+  if (!title || !dateString) {
     window.location.href = "/not-found";
+    return;
   }
+
+  const date = new Date(dateString);
 
   const page = document.getElementById("page");
 
@@ -25,8 +29,6 @@ const onTimerLoaded = () => {
   if (color) {
     document.getElementById("page")!.style.color = color;
   }
-
-  const date = new Date(decodeUnicodeFromBase64(params.get("date") as string));
 
   if (new Date() > date) {
     return;
