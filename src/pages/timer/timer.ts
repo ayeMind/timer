@@ -5,6 +5,10 @@ const onTimerLoaded = () => {
   const params = new URLSearchParams(window.location.search);
   const title = decodeUnicodeFromBase64(params.get("id") as string);
 
+  if (!title) {
+    window.location.href = "/not-found";
+  }
+
   const page = document.getElementById("page");
 
   if (page) {
